@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4q5vrj1hc6pr"]
+
+[ext_resource type="Script" uid="uid://cajyhu2ks288y" path="res://enemies_spawn.gd" id="1_rdv4w"]
+[ext_resource type="PackedScene" uid="uid://d1o3hjmhj0frm" path="res://asteroid.tscn" id="2_mim7n"]
+
+[sub_resource type="Curve2D" id="Curve2D_hysae"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -63, -74, 0, 0, 0, 0, 1994, -74, 0, 0, 0, 0, 2010, 1143, 0, 0, 0, 0, -61, 1149, 0, 0, 0, 0, -63, -74)
+}
+point_count = 5
+
+[node name="EnemiesSpawn" type="Node2D"]
+script = ExtResource("1_rdv4w")
+enemy_scene = ExtResource("2_mim7n")
+
+[node name="EnemiesPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hysae")
+
+[node name="EnemiesSpawn" type="PathFollow2D" parent="EnemiesPath"]
+position = Vector2(-63, -74)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

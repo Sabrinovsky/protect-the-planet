@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4wdl7fiob15j"]
+
+[ext_resource type="PackedScene" uid="uid://b21gmyetbsql2" path="res://earth.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b4q5vrj1hc6pr" path="res://enemies_spawn.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Earth" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(1017, 519)
+
+[node name="EnemiesSpawn" parent="." instance=ExtResource("2_0xm2m")]
