@@ -13,5 +13,5 @@ func _on_area_entered(area: Area2D) -> void:
 
 func flash_damage():
 	var tween = create_tween()
-	tween.tween_property($Sprite2D, "modulate", Color(1, 0, 0), 0.1)  # flash red
-	tween.tween_property($Sprite2D, "modulate", Color(1, 1, 1), 0.1)  # back to normal
+	tween.tween_property($Sprite2D, "modulate", Color(1, 0, 0), 0.1)
+	tween.tween_property($Sprite2D, "modulate", Color(1, 1, 1), 0.1)
