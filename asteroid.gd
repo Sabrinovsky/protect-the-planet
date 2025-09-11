@@ -1,5 +1,5 @@
 extends Node2D
-
+#
 @export var speed: float = 100.0
 @export var rotationSpeed: float = 10  # pixels per second
 @onready var earth = get_node("/root/Main/Earth")  # adjust path to your Earth node
