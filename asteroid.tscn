@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1o3hjmhj0frm"]
+[gd_scene load_steps=5 format=3 uid="uid://d1o3hjmhj0frm"]
 
 [ext_resource type="Script" uid="uid://c5utphmdc836y" path="res://asteroid.gd" id="1_p0ukn"]
 [ext_resource type="Texture2D" uid="uid://bos6sih11cudw" path="res://arts/PNG/Meteors/meteorBrown_big1.png" id="2_p0ukn"]
+[ext_resource type="PackedScene" uid="uid://ceweirbvnk54y" path="res://health.tscn" id="3_gm5ib"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0ukn"]
 radius = 69.0652
 
 [node name="Asteroid" type="Area2D" groups=["asteroids"]]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_p0ukn")
 metadata/_edit_group_ = true
 
@@ -16,5 +19,7 @@ texture = ExtResource("2_p0ukn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_p0ukn")
+
+[node name="Health" parent="." instance=ExtResource("3_gm5ib")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

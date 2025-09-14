@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlc0iakj8s48f"]
+[gd_scene load_steps=8 format=3 uid="uid://dlc0iakj8s48f"]
 
 [ext_resource type="Script" uid="uid://ccfq7c4a4f0dd" path="res://player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://cnu5qtmqlk8b" path="res://arts/PNG/Effects/fire03.png" id="1_onrkg"]
@@ -6,12 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://dymelqqjwhr4r" path="res://arts/PNG/Effects/fire01.png" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://bn7b1aw4x8tub" path="res://shooting_pointer.gd" id="5_sweqy"]
 [ext_resource type="PackedScene" uid="uid://dunv5t36t51ud" path="res://projectile.tscn" id="6_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://ceweirbvnk54y" path="res://health.tscn" id="7_1jxqw"]
 
 [node name="Player" type="Area2D"]
+collision_mask = 12
 script = ExtResource("1_i3pqv")
 speed = 250
 steeringSpeed = 3
 metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(35, 6.33299e-08)
+rotation = -3.12002
+scale = Vector2(4.10362, 4.10362)
+polygon = PackedVector2Array(9.2404, 10.2816, 14.3619, 10.4148, 13.8993, -11.0247, 8.04161, -11.3858, 6.03294, -2.81137, -0.243632, 0.00525734, 6.38697, 2.29962)
 
 [node name="MainBooster" type="Sprite2D" parent="."]
 position = Vector2(-42, 0)
@@ -43,7 +51,7 @@ rotation = 1.5708
 scale = Vector2(1.28961, 1.28961)
 texture = ExtResource("1_onrkg")
 
-[node name="Sprite2DShip" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("2_i3pqv")
 metadata/_edit_group_ = true
@@ -56,4 +64,8 @@ projectile_scene = ExtResource("6_2hs0m")
 [node name="ShootingCD" type="Timer" parent="ShootingPointer"]
 wait_time = 0.1
 
+[node name="Health" parent="." instance=ExtResource("7_1jxqw")]
+position = Vector2(-6.79716, 31.0463)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ShootingPointer/ShootingCD" to="ShootingPointer" method="_on_shooting_cd_timeout"]

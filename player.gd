@@ -25,3 +25,7 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		$LeftBooster.show()
 		rotation += delta*steeringSpeed
+
+
+func _on_area_entered(area: Area2D) -> void:
+	$Health.take_damage()
