@@ -1,21 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4wdl7fiob15j"]
+[gd_scene load_steps=4 format=3 uid="uid://b4wdl7fiob15j"]
 
 [ext_resource type="PackedScene" uid="uid://b21gmyetbsql2" path="res://earth.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b4q5vrj1hc6pr" path="res://enemies_spawn.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dlc0iakj8s48f" path="res://player.tscn" id="3_h2yge"]
-
-[sub_resource type="GDScript" id="GDScript_om26h"]
-script/source = "extends Node2D
-
-func take_damage():
-	print_debug(\"take_damage\")
-	flash_damage()
-
-func flash_damage():
-	var tween = create_tween()
-	tween.tween_property(get_parent().get_node(\"Sprite2D\"), \"modulate\", Color(1, 0, 0), 0.1)
-	tween.tween_property($\"../Sprite2D\", \"modulate\", Color(1, 1, 1), 0.1)
-"
 
 [node name="Main" type="Node2D"]
 
@@ -29,11 +16,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="Earth" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(1017, 519)
-script = SubResource("GDScript_om26h")
 
 [node name="EnemiesSpawn" parent="." instance=ExtResource("2_0xm2m")]
 
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(471, 495)
-
-[connection signal="body_entered" from="Earth" to="Earth" method="_on_body_entered"]

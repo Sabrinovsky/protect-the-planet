@@ -3,19 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://by40i45wa1qjt" path="res://arts/Planets/planet03.png" id="1_om26h"]
 [ext_resource type="Script" uid="uid://dbh7rnlpi4c7v" path="res://earth.gd" id="1_qbwya"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_om26h"]
-radius = 97.4166
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbwya"]
+radius = 101.124
 
 [node name="earth" type="Area2D" groups=["earth"]]
 script = ExtResource("1_qbwya")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 1)
-shape = SubResource("CircleShape2D_om26h")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_om26h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["earth"]]
+shape = SubResource("CircleShape2D_qbwya")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
