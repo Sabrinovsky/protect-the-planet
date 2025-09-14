@@ -18,6 +18,5 @@ func _process(delta: float) -> void:
 
 
 func _on_shooting_cd_timeout() -> void:
-	print_debug("can shoot")
 	cd = false
 	pass # Replace with function body.

@@ -51,7 +51,7 @@ func _init() -> void:
     rotation_dir = randf_range(-0.6, 0.5)
 
 func _ready() -> void:
-    var asteroid_scale = randf_range(0.5, 1)
+    var asteroid_scale = randf_range(0.3, 1)
     size = get_sprite(asteroid_scale)
     var rand_sprite_name = meteorSprites[size].pick_random()
     $Sprite2D.texture = loadTexture(rand_sprite_name)
