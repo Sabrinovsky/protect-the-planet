@@ -28,4 +28,8 @@ func _process(delta):
 
 
 func _on_area_entered(area: Area2D) -> void:
-	$Health.take_damage()
+	$Health.take_damage(100)
+
+
+func _on_health_die() -> void:
+	queue_free()

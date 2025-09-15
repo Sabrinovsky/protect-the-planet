@@ -36,11 +36,23 @@ var bigMeteorSprites = [
 	"meteorGrey_big4"
 ]
 
-var meteorSprites = {
-	"tiny": tinyMeteorSprites,
-	"small": smallMeteorSprites,
-	"medium": mediumMeteorSprites,
-	"big": bigMeteorSprites
+var asteroidsProperties = {
+	"tiny": {
+		"sprites": tinyMeteorSprites,
+		"hp": 1
+	},
+	"small": {
+		"sprites": smallMeteorSprites,
+		"hp": 2,
+	},
+	"medium": {
+		"sprites": mediumMeteorSprites,
+		"hp": 5
+	},
+	"big": {
+		"sprites": bigMeteorSprites,
+		"hp": 10
+	}
 }
 
 var rotation_dir
@@ -53,8 +65,9 @@ func _init() -> void:
 func _ready() -> void:
 	var asteroid_scale = randf_range(0.3, 1)
 	size = get_sprite(asteroid_scale)
-	var rand_sprite_name = meteorSprites[size].pick_random()
+	var rand_sprite_name = asteroidsProperties[size].sprites.pick_random()
 	$Sprite2D.texture = loadTexture(rand_sprite_name)
+	$Health.hp = asteroidsProperties[size].hp
 	
 
 	var tex_size = $Sprite2D.texture.get_size() * $Sprite2D.scale
@@ -72,7 +85,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("earth"):
 		queue_free()
 	if area.is_in_group("projectiles"):
-		$Health.take_damage()
+		$Health.take_damage(1)
 	pass
 
 func get_sprite(size):
@@ -87,3 +100,7 @@ func get_sprite(size):
 		
 func loadTexture(name):
 	return load("res://arts/PNG/Meteors/" + name+".png")
+
+
+func _on_health_die() -> void:
+	queue_free()
