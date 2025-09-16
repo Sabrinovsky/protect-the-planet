@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8giki37p1rup"]
+
+[ext_resource type="Script" uid="uid://cgwl54vi2ewqy" path="res://hud.gd" id="1_37p78"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_37p78")
+
+[node name="StartGame" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.5
+offset_top = -85.0
+offset_right = 151.5
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(638.5, 531)
+theme_override_colors/font_disabled_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_colors/font_hover_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_colors/font_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Start game"
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.709804, 0.858824, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "The earth is gone!"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.5
+offset_top = -85.0
+offset_right = 151.5
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(638.5, 531)
+theme_override_colors/font_disabled_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_colors/font_hover_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_colors/font_color = Color(0.901961, 0.921569, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Try again"
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

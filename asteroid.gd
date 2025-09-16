@@ -4,6 +4,7 @@ extends Node2D
 @export var rotationSpeed: float = 10  # pixels per second
 @onready var earth = get_node("/root/Main/Earth")  # adjust path to your Earth node
 var size
+var dmg
 var tinyMeteorSprites = [
 	"meteorBrown_tiny1",
 	"meteorBrown_tiny2",
@@ -39,19 +40,23 @@ var bigMeteorSprites = [
 var asteroidsProperties = {
 	"tiny": {
 		"sprites": tinyMeteorSprites,
-		"hp": 1
+		"hp": 1,
+		"dmg": 5,
 	},
 	"small": {
 		"sprites": smallMeteorSprites,
 		"hp": 2,
+		"dmg": 10
 	},
 	"medium": {
 		"sprites": mediumMeteorSprites,
-		"hp": 5
+		"hp": 5,
+		"dmg": 20
 	},
 	"big": {
 		"sprites": bigMeteorSprites,
-		"hp": 10
+		"hp": 10,
+		"dmg": 35
 	}
 }
 
@@ -68,7 +73,7 @@ func _ready() -> void:
 	var rand_sprite_name = asteroidsProperties[size].sprites.pick_random()
 	$Sprite2D.texture = loadTexture(rand_sprite_name)
 	$Health.hp = asteroidsProperties[size].hp
-	
+	dmg = asteroidsProperties[size].dmg
 
 	var tex_size = $Sprite2D.texture.get_size() * $Sprite2D.scale
 	var shape = CircleShape2D.new()

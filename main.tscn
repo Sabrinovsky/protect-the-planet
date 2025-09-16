@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4wdl7fiob15j"]
+[gd_scene load_steps=6 format=3 uid="uid://b4wdl7fiob15j"]
 
+[ext_resource type="Script" uid="uid://hu2dljhtiktf" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b21gmyetbsql2" path="res://earth.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b4q5vrj1hc6pr" path="res://enemies_spawn.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dlc0iakj8s48f" path="res://player.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b8giki37p1rup" path="res://hud.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+
+[node name="HUD" parent="." instance=ExtResource("5_lquwl")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -316.0
@@ -21,3 +26,7 @@ position = Vector2(1017, 519)
 
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(471, 495)
+
+[connection signal="pause_game" from="HUD" to="." method="_on_hud_pause_game"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
+[connection signal="earth_die" from="Earth" to="." method="_on_earth_earth_die"]
