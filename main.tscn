@@ -30,3 +30,4 @@ position = Vector2(471, 495)
 [connection signal="pause_game" from="HUD" to="." method="_on_hud_pause_game"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="earth_die" from="Earth" to="." method="_on_earth_earth_die"]
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]

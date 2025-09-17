@@ -18,3 +18,7 @@ func _on_hud_pause_game() -> void:
 func _on_earth_earth_die() -> void:
 	pause()
 	$HUD.game_over()
+
+func _on_player_game_over() -> void:
+	pause()
+	$HUD.game_over()
